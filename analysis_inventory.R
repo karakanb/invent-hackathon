@@ -4,13 +4,13 @@ library(data.table)
 
 # Define the IO paths.
 inputFilePath <- 'rdata/InventoryPosition.csv'
-outputFİlePath <- 'rdata/ForecastResults_FoolsOnParade.csv'
+outputFİlePath <- 'rdata/ForecastResults.csv'
 
 # Read the data from csv.
 inventoryData <- fread(inputFilePath, header = TRUE, dec = ".", sep = '|')
 inventoryData$Date <- as.Date(inventoryData$Date, format="%d.%m.%Y")
 
-# Drop the unused rows.
+# Drop the unused columns.
 inventoryData[, c("SalesRevenue","IncomingStock"):=NULL]
 row.names(inventoryData) <- 1:nrow(inventoryData)
 
